@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conteúdos | Lorena Marangon Mantovani · Direito Bancário</title>
+<meta name="description" content="Conteúdos informativos sobre direito bancário e do consumidor, por Lorena Marangon Mantovani, OAB/MG 231.885.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#15253f;--navy-deep:#0c1729;--cream:#ece9e4;--cream-soft:#f7f5f2;--tan:#c5a483;--tan-dark:#a9835e}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--navy);font-family:'Montserrat',sans-serif;font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.top{background:var(--navy);color:var(--cream);text-align:center;padding:48px 24px 44px}
+.top img{width:52px;height:auto;display:block;margin:0 auto 18px}
+.top h1{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:clamp(34px,7vw,48px);line-height:1.1}
+.top h1 em{color:var(--tan);font-style:italic}
+.top p{margin-top:12px;font-size:13px;letter-spacing:.04em;opacity:.85;max-width:460px;margin-inline:auto}
+.back{display:inline-block;margin-top:20px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--tan);text-decoration:none;border-bottom:1px solid var(--tan);padding-bottom:2px}
+.feed{max-width:520px;margin:0 auto;padding:32px 16px 24px;display:flex;flex-direction:column;gap:28px}
+.post{background:var(--cream-soft);border:1px solid #ddd4c6;border-radius:14px;overflow:hidden;box-shadow:0 8px 28px rgba(21,37,63,.07)}
+.who{display:flex;align-items:center;gap:12px;padding:14px 16px}
+.avatar{width:38px;height:38px;border-radius:50%;background:var(--navy);display:grid;place-items:center;flex:none}
+.avatar img{width:22px;height:auto}
+.who b{display:block;font-size:13px;font-weight:600;letter-spacing:.02em}
+.who span{font-size:11px;color:var(--tan-dark);letter-spacing:.14em;text-transform:uppercase}
+.post > img{display:block;width:100%;height:auto;aspect-ratio:4/5;background:#e3dccf}
+.body{padding:16px 18px 20px}
+.title{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:22px;line-height:1.2;margin-bottom:10px}
+.cap{font-size:14px;white-space:pre-line;overflow:hidden}
+.cap.closed{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical}
+.more{background:none;border:0;color:var(--tan-dark);font:600 12px 'Montserrat',sans-serif;letter-spacing:.1em;text-transform:uppercase;margin-top:8px;cursor:pointer;padding:4px 0}
+.tags{margin-top:12px;font-size:13px;color:var(--tan-dark)}
+.aviso{margin-top:14px;padding-top:12px;border-top:1px solid #ddd4c6;font-size:11.5px;color:#4d5b72}
+.msg{text-align:center;padding:40px 16px;font-size:14px}
+footer{background:var(--navy-deep);color:var(--cream);text-align:center;padding:36px 24px;font-size:12px;letter-spacing:.04em}
+footer b{display:block;font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;margin-bottom:4px}
+footer span{color:var(--tan)}
+footer .l{margin-top:14px;opacity:.8;max-width:420px;margin-inline:auto;line-height:1.6}
+footer a{color:var(--tan);text-decoration:none}
+</style>
+</head>
+<body>
+<header class="top">
+  <img src="assets/logo.png" alt="Logotipo LM, Lorena Marangon Mantovani">
+  <h1>Conteúdos sobre <em>direito bancário</em></h1>
+  <p>Informações em linguagem simples sobre direitos do consumidor, bancos e benefícios.</p>
+  <a class="back" href="./">← Voltar ao site</a>
+</header>
+
+<main class="feed" id="feed"><p class="msg">Carregando conteúdos…</p></main>
+
+<footer>
+  <b>Lorena Marangon Mantovani</b>
+  <span>Direito Bancário · OAB/MG 231.885</span>
+  <p class="l">Conteúdo meramente informativo. Para saber mais sobre o seu caso específico, procure orientação de um advogado de confiança.</p>
+  <p class="l">Instagram e TikTok: <a href="https://www.instagram.com/advlorenamantovani" target="_blank" rel="noopener">@advlorenamantovani</a></p>
+</footer>
+
+<script>
+(function(){
+  var feed=document.getElementById('feed');
+  function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+  fetch('posts.json?v='+Date.now()).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(list){
+    feed.innerHTML='';
+    list.forEach(function(p){
+      var a=el('article','post');
+      var who=el('div','who');
+      var av=el('div','avatar');var lg=el('img');lg.src='assets/logo.png';lg.alt='';av.appendChild(lg);
+      var nm=el('div');nm.appendChild(el('b',null,'Lorena Marangon Mantovani'));nm.appendChild(el('span',null,'Direito Bancário'));
+      who.appendChild(av);who.appendChild(nm);a.appendChild(who);
+      var im=el('img');im.src=p.imagem;im.alt=p.alt||p.titulo;im.loading='lazy';a.appendChild(im);
+      var b=el('div','body');
+      b.appendChild(el('h2','title',p.titulo));
+      var c=el('p','cap closed',p.legenda);b.appendChild(c);
+      var m=el('button','more','Ver legenda completa');m.type='button';
+      m.onclick=function(){var o=c.classList.toggle('closed');m.textContent=o?'Ver legenda completa':'Mostrar menos'};
+      b.appendChild(m);
+      if(p.tags)b.appendChild(el('p','tags',p.tags));
+      b.appendChild(el('p','aviso',p.aviso||''));
+      a.appendChild(b);feed.appendChild(a);
+    });
+  }).catch(function(){feed.innerHTML='<p class="msg">Não foi possível carregar os conteúdos agora. Atualize a página em instantes.</p>'});
+})();
+</script>
+</body>
+</html>
